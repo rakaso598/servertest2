@@ -30,7 +30,7 @@ public class ApiProductController {
   private final MessageSource messageSource;
 
   //초기화면
-  @GetMapping
+  @GetMapping("/init")
   public String init(){
     return "/api/product/init";
   }
