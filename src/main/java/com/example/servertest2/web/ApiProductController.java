@@ -45,8 +45,6 @@ public class ApiProductController {
     ApiResponse<Object> res = null;
 
     // 요청데이터 유효성 체크
-    // 1. 필드 기반 검증 ( 어노테이션 + 코드)
-    // 1.1 필드오류 , 상품수량 1000 초과 불가
     if(reqSave.getQuantity() > 1000) {
       bindingResult.rejectValue("quantity","product",new Object[]{1000},null);
     }
@@ -56,8 +54,6 @@ public class ApiProductController {
       return MyUtil.validChkApiReq(bindingResult);
     }
 
-    // 2. 글로벌 오류(2개 이상 필드 크로스검증)
-    // 2.1 총액(상품수량 * 단가) 1000만원 초과 금지
     if(reqSave.getQuantity() * reqSave.getPrice() > 10_000_000L) {
       bindingResult.reject("totalPrice",new Object[]{1000},null);
     }
@@ -68,7 +64,7 @@ public class ApiProductController {
     }
 
     Product product = new Product();
-    BeanUtils.copyProperties(reqSave, product); // 객체간 속성 복사
+    BeanUtils.copyProperties(reqSave, product);
 
     //등록
     Long productId = productSVC.save(product);
@@ -108,8 +104,6 @@ public class ApiProductController {
     log.info("reqUpdate={}",reqUpdate);
     ApiResponse<Object> res = null;
 
-    // 1. 필드 기반 검증 ( 어노테이션 + 코드)
-    // 1.1 필드오류 , 상품수량 1000 초과 불가
     if(reqUpdate.getQuantity() > 1000) {
       bindingResult.rejectValue("quantity","product",new Object[]{1000},null);
     }
@@ -117,8 +111,6 @@ public class ApiProductController {
       log.info("bindingResult={}", bindingResult);
       return MyUtil.validChkApiReq(bindingResult);
     }
-    // 2. 글로벌 오류(2개 이상 필드 크로스검증)
-    // 2.1 총액(상품수량 * 단가) 1000만원 초과 금지
     if(reqUpdate.getQuantity() * reqUpdate.getPrice() > 10_000_000L) {
       bindingResult.reject("totalPrice",new Object[]{1000},null);
     }

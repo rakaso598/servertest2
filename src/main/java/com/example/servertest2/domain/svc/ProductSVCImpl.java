@@ -16,10 +16,6 @@ public class ProductSVCImpl implements ProductSVC {
 
   private final ProductDAO productDAO;
 
-//  @Autowired
-//  public ProductSVCImpl(ProductDAO productDAO) {
-//    this.productDAO = productDAO;
-//  }
 
   @Override
   public Long save(Product product) {

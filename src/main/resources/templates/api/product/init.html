@@ -116,6 +116,9 @@
         $addFormWrap.innerHTML = `
           <form id="frm">
               <div>
+                --상품 등록 화면--
+              </div>
+              <div>
                   <label for="pname">상품명</label>
                   <input type="text" id="pname" name="pname"/>
               </div>
@@ -223,6 +226,9 @@
         $readFormWrap.innerHTML = `
           <form id="frm2">
               <div>
+                --상품 수정 및 삭제 화면--
+              </div>
+              <div>
                   <label for="pid2">상품아이디</label>
                   <input type="text" id="pid2" name="pid" readonly/>
               </div>
@@ -241,6 +247,9 @@
               </div>
               </div>
               <div class='btns'></div>
+              <div>
+                --목록 화면--
+              </div>
           </form>
         `;
         document.body.insertAdjacentElement('afterbegin', $readFormWrap);
